@@ -1,0 +1,50 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: accounting
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secure_password
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - private
+
+  redis:
+    image: redis:7-alpine
+    networks:
+      - private
+
+  accounting-api:
+    build: ./accounting-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./shared/uploads:/app/shared/uploads
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - public
+      - private
+
+  accounting-processor:
+    build: ./accounting-processor
+    volumes:
+      - ./shared/uploads:/app/shared/uploads
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - private
+
+volumes:
+  postgres_data:
+  
+networks:
+  public:
+  private:

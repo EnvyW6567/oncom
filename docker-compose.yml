@@ -5,9 +5,9 @@ services:
   postgres:
     image: postgres:15
     environment:
-      POSTGRES_DB: accounting
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secure_password
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres_data:/var/lib/postgresql/data
@@ -44,7 +44,7 @@ services:
 
 volumes:
   postgres_data:
-  
+
 networks:
   public:
   private:

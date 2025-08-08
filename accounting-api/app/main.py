@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from .database import engine
+from .database.postgres_db import engine
 from .model import Base
 from .router import router
 

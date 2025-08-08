@@ -2,8 +2,11 @@ from fastapi import FastAPI
 
 from .database import engine
 from .model import Base
+from .router import router
 
 app = FastAPI(title="Accounting API", version="1.0.0")
+
+app.include_router(router)
 
 
 @app.on_event("startup")

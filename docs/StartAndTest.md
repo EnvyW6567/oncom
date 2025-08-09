@@ -21,6 +21,10 @@ docker-compose up --build
 
 ### 3. API 문서
 
+```
+localhost:8000/docs
+```
+
 [![API Docs](https://img.shields.io/badge/API%20Docs-Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
 ](http://localhost:8000/docs)
 

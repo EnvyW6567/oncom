@@ -4,10 +4,10 @@ from fastapi import Depends
 from sqlalchemy import select, and_, null, desc
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..company_record_repository import CompanyRecordRepository
-from ...database.postgres_db import get_postgres
-from ...model import Transaction, Company, Category
-from ...schema import CompanyRecord
+from app.database.postgres_db import get_postgres
+from app.model import Transaction, Company, Category
+from app.repository.company_record_repository import CompanyRecordRepository
+from app.schema import CompanyRecord
 
 
 class PostgresCompanyRecordRepository(CompanyRecordRepository):

@@ -1,9 +1,9 @@
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..processing_job_repository import ProcessingJobRepository
-from ...database.postgres_db import get_postgres
-from ...model import ProcessingJob
+from app.database.postgres_db import get_postgres
+from app.model import ProcessingJob
+from app.repository.processing_job_repository import ProcessingJobRepository
 
 
 class PostgresProcessingJobRepository(ProcessingJobRepository):

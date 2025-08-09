@@ -53,6 +53,7 @@ class TransactionProcessor:
 
     def parse_transaction(self, job_id: str, row: pd.Series, rules: dict) -> Transaction:
         row_data = row.to_dict()
+        logger.info('ROW_DATA: {}'.format(row_data))
         transaction = Transaction.from_csv_row(job_id, row_data)
         transaction.classify(rules)
 

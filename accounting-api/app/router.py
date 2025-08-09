@@ -17,6 +17,6 @@ async def process_transactions(
 
 
 @router.get("/records")
-async def get_company_records(company_id: int = Query(alias="companyId"),
+async def get_company_records(company_id: str = Query(alias="companyId"),
                               accounting_service: AccountingService = Depends(AccountingService)):
-    return accounting_service.get_company_records(company_id)
+    return await accounting_service.get_company_records(company_id)

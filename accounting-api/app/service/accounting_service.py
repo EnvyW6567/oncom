@@ -11,6 +11,7 @@ from ..database.redis_db import get_redis
 from ..model import ProcessingJob
 from ..repository.impl.postgres_processing_job_repository import PostgresProcessingJobRepository
 from ..repository.processing_job_repository import ProcessingJobRepository
+from ..schema import CompanyRecordsRes
 
 
 class AccountingService:
@@ -41,6 +42,11 @@ class AccountingService:
         await self.__save_and_publish_job(job)
 
         return job
+
+    async def get_company_records(self, company_id: int) -> CompanyRecordsRes:
+        company_records = self.__processing_job_repository.find_company_records(company_id)
+
+        return CompanyRecordsRes(records=company_records)
 
     async def __process_transactions_file(self, file: UploadFile) -> str:
         file_id = str(uuid.uuid4())

@@ -1,4 +1,4 @@
-from fastapi import APIRouter, UploadFile, Depends, File
+from fastapi import APIRouter, UploadFile, Depends, File, Query
 
 from .service.accounting_service import AccountingService
 
@@ -17,5 +17,6 @@ async def process_transactions(
 
 
 @router.get("/records")
-async def get_company_records():
-    pass
+async def get_company_records(company_id: int = Query(alias="companyId"),
+                              accounting_service: AccountingService = Depends(AccountingService)):
+    return accounting_service.get_company_records(company_id)

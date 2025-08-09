@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, Depends, File, Query
 
-from app.service.accounting_service import AccountingService
+from app.application.service.accounting_service import AccountingService
 
 router = APIRouter(prefix="/api/v1/accounting")
 

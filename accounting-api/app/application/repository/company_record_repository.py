@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from typing import List
 
-from app.schema import CompanyRecord
+from app.application.dto.response.company_records_res import CompanyRecord
 
 
 class CompanyRecordRepository:

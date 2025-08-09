@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from app.model import ProcessingJob
+from app.infrastructure.model.model import ProcessingJob
 
 
 class ProcessingJobRepository(metaclass=ABCMeta):

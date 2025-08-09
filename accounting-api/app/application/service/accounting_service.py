@@ -7,13 +7,13 @@ from datetime import datetime
 import aiofiles
 from fastapi import UploadFile, Depends
 
-from app.database.redis_db import get_redis
-from app.model import ProcessingJob
-from app.repository.company_record_repository import CompanyRecordRepository
-from app.repository.impl.postgres_company_record_repository import PostgresCompanyRecordRepository
-from app.repository.impl.postgres_processing_job_repository import PostgresProcessingJobRepository
-from app.repository.processing_job_repository import ProcessingJobRepository
-from app.schema import CompanyRecordsRes
+from app.application.dto.response.company_records_res import CompanyRecordsRes
+from app.application.repository.company_record_repository import CompanyRecordRepository
+from app.application.repository.processing_job_repository import ProcessingJobRepository
+from app.infrastructure.database.redis_db import get_redis
+from app.infrastructure.model.model import ProcessingJob
+from app.infrastructure.repository.postgres_company_record_repository import PostgresCompanyRecordRepository
+from app.infrastructure.repository.postgres_processing_job_repository import PostgresProcessingJobRepository
 
 
 class AccountingService:

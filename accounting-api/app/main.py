@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-from .database.postgres_db import engine
-from .model import Base
-from .router import router
+from app.infrastructure.database.postgres_db import engine
+from app.infrastructure.model.model import Base
+from app.presentation.accounting_controller import router
 
 app = FastAPI(title="Accounting API", version="1.0.0")
 

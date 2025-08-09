@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional, List
+from typing import Optional
 
 from pydantic import BaseModel, Field, ConfigDict
 
@@ -15,7 +15,4 @@ class CompanyRecord(BaseModel):
     category_name: Optional[str] = Field("미분류", description="계정과목명")
     transaction_date: datetime = Field(..., description="거래일시")
     created_at: datetime = Field(..., description="생성일시")
-
-
-class CompanyRecordsRes(BaseModel):
-    records: List[CompanyRecord] = Field(default_factory=list)
+    

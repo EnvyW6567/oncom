@@ -44,7 +44,7 @@ class AccountingService:
         return job
 
     async def get_company_records(self, company_id: int) -> CompanyRecordsRes:
-        company_records = self.__processing_job_repository.find_company_records(company_id)
+        company_records = await self.__processing_job_repository.find_company_records(company_id)
 
         return CompanyRecordsRes(records=company_records)
 

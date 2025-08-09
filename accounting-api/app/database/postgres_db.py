@@ -15,7 +15,7 @@ HOST = os.getenv("POSTGRES_HOST", "postgres")
 
 DATABASE_URL = f"postgresql+asyncpg://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB}"
 
-engine = create_async_engine(DATABASE_URL, echo=False)
+engine = create_async_engine(DATABASE_URL, echo=True)
 AsyncSessionLocal = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 

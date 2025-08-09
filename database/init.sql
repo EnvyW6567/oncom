@@ -104,3 +104,36 @@ WHERE schemaname = 'public'
 INSERT INTO companies (company_id, company_name)
 VALUES ('com_1', 'A 커머스'),
        ('com_2', 'B 커머스');
+
+-- 카테고리 초기값
+INSERT INTO categories (category_id, company_id, category_name, keywords)
+VALUES
+    -- A 커머스 카테고리
+    ('cat_101', 'com_1', '매출', '[
+      "네이버페이",
+      "쿠팡"
+    ]'::jsonb),
+    ('cat_102', 'com_1', '식비', '[
+      "배달의민족",
+      "김밥천국"
+    ]'::jsonb),
+    ('cat_103', 'com_1', '사무용품비', '[
+      "오피스디포"
+    ]'::jsonb),
+
+    -- B 커머스 카테고리
+    ('cat_201', 'com_2', '교통비', '[
+      "카카오 T",
+      "택시"
+    ]'::jsonb),
+    ('cat_202', 'com_2', '통신비', '[
+      "KT",
+      "SKT"
+    ]'::jsonb),
+    ('cat_203', 'com_2', '지급수수료', '[
+      "우체국",
+      "등기"
+    ]'::jsonb),
+    ('cat_204', 'com_2', '복리후생비', '[
+      "스타벅스"
+    ]'::jsonb);

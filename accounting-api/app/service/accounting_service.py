@@ -9,6 +9,7 @@ from fastapi import UploadFile, Depends
 
 from ..database.redis_db import get_redis
 from ..model import ProcessingJob
+from ..repository.company_record_repository import CompanyRecordRepository
 from ..repository.impl.postgres_processing_job_repository import PostgresProcessingJobRepository
 from ..repository.processing_job_repository import ProcessingJobRepository
 from ..schema import CompanyRecordsRes
@@ -23,8 +24,10 @@ class AccountingService:
     def __init__(
             self,
             processing_job_repository: ProcessingJobRepository = Depends(PostgresProcessingJobRepository),
+            company_record_repository: CompanyRecordRepository = Depends(PostgresProcessingJobRepository),
             redis=Depends(get_redis)
     ):
+        self.__company_record_repository = company_record_repository
         self.__processing_job_repository = processing_job_repository
         self.__redis_client = redis
 
@@ -44,7 +47,7 @@ class AccountingService:
         return job
 
     async def get_company_records(self, company_id: int) -> CompanyRecordsRes:
-        company_records = await self.__processing_job_repository.find_company_records(company_id)
+        company_records = await self.__company_record_repository.find_company_records(company_id)
 
         return CompanyRecordsRes(records=company_records)
 
